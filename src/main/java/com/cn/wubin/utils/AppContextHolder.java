@@ -1,6 +1,6 @@
 package com.cn.wubin.utils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContextAware;
  * @author zzb
  */
 public class AppContextHolder implements ApplicationContextAware {
-	private static final Logger LOGGER = LoggerFactory.getLogger(AppContextHolder.class);
+	private static final Logger LOGGER = LogManager.getLogger(AppContextHolder.class);
 	public static final String DEFAULT_SESSION_FACTORY = "mySessionFactory";
 	private static ApplicationContext appContext;
 	private static boolean devMode = false;

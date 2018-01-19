@@ -1,7 +1,8 @@
 package com.cn.wubin.interceptor;
 
 import com.cn.wubin.utils.EncryptUtil;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +17,7 @@ import java.util.Map;
 @SuppressWarnings({ "rawtypes" })
 public class ApiInterceptor implements HandlerInterceptor {
 
-	private static Logger logger = Logger.getLogger(ApiInterceptor.class);
+	private static Logger logger = LogManager.getLogger(ApiInterceptor.class);
 
 	public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 		Map<String, Object> rec = new LinkedHashMap<String, Object>();

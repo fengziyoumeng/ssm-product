@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30">
+    <properties>
+        <!--<property name="LOG_HOME">/home/fund/ftdm/account/logs</property>-->
+        <!--<property name="FILE_NAME">ftdm-account</property>-->
+        <property name="LOG_HOME">D:/logs</property>
+        <property name="FILE_NAME">ssm-product</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--
+                %d{HH:mm:ss.SSS} 表示输出到毫秒的时间
+                %t 输出当前线程名称
+                %-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+                %logger 输出logger名称，因为Root Logger没有名称，所以没有输出
+                %msg 日志文本
+                %n 换行
+
+                eg：
+                2018-01-19 17:20:54.055 [http-nio-8080-exec-6] INFO  com.cn.wubin.controller.TestController - {"banner_url":"http://m.51jjhao.com/static/pic/banner1.png","id":1,"site":"0","skip_url":"http://m.51jjhao.com/static/pic/first_001.png","sort":"1","state":"10","status":"1"}
+                2018-01-19 17:27:53.141 [main] DEBUG  - debug level
+            -->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg %n"/>
+        </Console>
+        <RollingRandomAccessFile  name="RollingFile" fileName="${LOG_HOME}/${FILE_NAME}.log"
+                                  filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg %n"/>
+            <Policies>
+                <!--<TimeBasedTriggeringPolicy interval="1"/>-->
+                <SizeBasedTriggeringPolicy size="30 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <loggers>
+        <logger name="org.slf4j" level="INFO" />
+        <logger name="org.quartz" level="INFO" />
+        <logger name="org.redisson" level="INFO" />
+        <logger name="com.atomikos" level="WARN" />
+        <logger name="com.alibaba.dubbo" level="INFO" />
+        <logger name="org.apache.activemq" level="INFO" />
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.apache.zookeeper" level="WARN" />
+        <logger name="org.springframework.web" level="DEBUG" />
+        <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" />
+        <logger name="log4jdbc.log4j2" level="DEBUG" additivity="true">
+            <MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY" onMismatch="NEUTRAL" />
+            <appender-ref ref="Console" />
+        </logger>
+        <AsyncLogger  name="org.ibase4j" level="DEBUG" additivity="false" includeLocation="true">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </AsyncLogger>
+        <Root level="DEBUG">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </Root>
+    </loggers>
+</Configuration>

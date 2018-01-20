@@ -14,6 +14,6 @@ config/server.properties
 sonar-project.properties
 .metadata
 **/*.iml
-resources/jdbc.properties
 jdbc.properties
+redis.properties
 generatorConfig.xml

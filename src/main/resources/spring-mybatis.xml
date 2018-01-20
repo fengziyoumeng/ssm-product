@@ -13,9 +13,15 @@
     <context:component-scan base-package="com.cn.wubin" />
 
     <!-- 引入配置文件 -->
-    <bean id="propertyConfigurer"
+    <bean id="ResourceConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:jdbc.properties" />
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:redis.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -53,6 +59,13 @@
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- redis 读取redis.properties连接redis-->
+    <bean id="redisClient" class="com.cn.wubin.redis.impl.ShardedJedisClientImpl">
+        <constructor-arg name="host" value="${redis-ip}"/>
+        <constructor-arg name="port" value="${redis-port}"/>
+        <constructor-arg name="passwd" value="${redis-passwd}"/>
     </bean>
 
 </beans>

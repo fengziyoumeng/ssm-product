@@ -208,6 +208,19 @@
     </dependency>
     <!-- end apache shiro -->
 
+    <!-- start redis整合 -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
+    </dependency>
+    <!-- end redis整合 -->
+
     <!-- start 一些工具类，如StringUtil -->
     <dependency>
       <groupId>tool</groupId>

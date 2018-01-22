@@ -220,6 +220,24 @@
     </dependency>
     <!-- end redis整合 -->
 
+    <!-- start 分库分表 -->
+    <dependency>
+      <groupId>com.dangdang</groupId>
+      <artifactId>sharding-jdbc-config-spring</artifactId>
+      <version>1.5.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.19</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.7</version>
+    </dependency>
+    <!-- end 分库分表 -->
+
     <!-- start 一些工具类，如StringUtil -->
     <dependency>
       <groupId>tool</groupId>

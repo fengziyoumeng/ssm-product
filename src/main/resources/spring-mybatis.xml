@@ -68,4 +68,5 @@
         <constructor-arg name="passwd" value="${redis-passwd}"/>
     </bean>
 
+    <bean id="cacheInitBean" class="com.cn.wubin.cache.CacheInitBean" />
 </beans>

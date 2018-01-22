@@ -1,7 +1,9 @@
 package com.cn.wubin.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.cn.wubin.cache.Global;
 import com.cn.wubin.model.pojo.BannerInfo;
+import com.cn.wubin.redis.ShardedJedisClient;
 import com.cn.wubin.service.IBannerInfoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,10 +21,19 @@ public class TestController {
     @Resource
     private IBannerInfoService bannerInfoService;
 
+    @Resource
+    private ShardedJedisClient redisClient;
+
     private static Logger logger = LogManager.getLogger(TestController.class);
 
     @RequestMapping("/query/data")
     public String queryData(HttpServletRequest request,Model model){
+
+        String cacheValue = Global.getValue("check_version_android");
+        logger.info("缓存值："+cacheValue);
+
+        String value = redisClient.get("name");
+        logger.info(value);
 
         Long id = Long.parseLong(request.getParameter("id"));
         BannerInfo bannerInfo = bannerInfoService.queryBannerInfo(id);
@@ -32,7 +43,6 @@ public class TestController {
     }
 
     public static void main(String[] args) {
-        // 这种日志是打印在
         Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
         logger.trace("trace level");
         logger.debug("debug level");

@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class CacheInitBean implements InitializingBean,ApplicationContextAware{
 
-    ApplicationContext applicationContext;
+    public static ApplicationContext applicationContext;
 
     public void afterPropertiesSet() throws Exception {
         System.out.println("容器初始化的时候带上了我");

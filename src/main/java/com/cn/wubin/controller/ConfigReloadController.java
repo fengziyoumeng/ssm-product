@@ -10,14 +10,14 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static com.cn.wubin.cache.CacheInitBean.applicationContext;
+
 /**
  * 缓存重置接口
  */
 @Controller
 @RequestMapping("/config")
-public class ConfigReloadController implements ApplicationContextAware{
-
-    ApplicationContext applicationContext;
+public class ConfigReloadController {
 
     private static Logger logger = LogManager.getLogger(ConfigReloadController.class);
 
@@ -33,7 +33,7 @@ public class ConfigReloadController implements ApplicationContextAware{
         return "success";  //将model对象属性映射到success.jsp
     }
 
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
+//    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+//        this.applicationContext = applicationContext;
+//    }
 }

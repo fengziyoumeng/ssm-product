@@ -29,7 +29,9 @@ public class TestController {
     @RequestMapping("/query/data")
     public String queryData(HttpServletRequest request,Model model){
 
-        String cacheValue = Global.getValue("check_version_android");
+//        URLDecoder.decode(value, "utf-8");
+
+        String cacheValue = Global.getValue("ftp_username");
         logger.info("缓存值："+cacheValue);
 
         String value = redisClient.get("name");
@@ -50,6 +52,12 @@ public class TestController {
         logger.warn("warn level");
         logger.error("error level");
         logger.fatal("fatal level");
+
+        String operativeInfos = "job=nsnnss|module=jdjjdjd";
+        if(operativeInfos.contains("|")){
+            operativeInfos = operativeInfos.replace("|",",");
+        }
+        System.out.println(operativeInfos);
     }
 
 }

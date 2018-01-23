@@ -218,9 +218,19 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.3.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.redisson</groupId>
+      <artifactId>redisson</artifactId>
+      <version>2.10.0</version>
+    </dependency>
     <!-- end redis整合 -->
 
     <!-- start 分库分表 -->
+    <dependency>
+      <groupId>com.dangdang</groupId>
+      <artifactId>sharding-jdbc-core</artifactId>
+      <version>1.4.2</version>
+    </dependency>
     <dependency>
       <groupId>com.dangdang</groupId>
       <artifactId>sharding-jdbc-config-spring</artifactId>

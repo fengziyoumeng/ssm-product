@@ -52,8 +52,26 @@
     <!-- 此处可以可以配置成*.do，对应struts的后缀习惯,但是我自定义了一个httl-->
     <url-pattern>*.httl</url-pattern>
   </servlet-mapping>
+
+  <!-- 如果某个会话在一定时间内未被访问，服务器可以抛弃它以节省内存,设置单个会话对象的超时值为30分钟 -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+  <!-- 指定欢迎文件页配置 -->
   <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
+    <welcome-file>/basejsp/index.jsp</welcome-file>
   </welcome-file-list>
 
+  <!-- 当系统发生404错误时，跳转到错误处理页面NotFound.jsp -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/basejsp/notFound.jsp</location>
+  </error-page>
+
+  <!-- 当系统发生java.lang.NullPointerException（即空指针异常）时，跳转到错误处理页面error.jsp -->
+  <error-page>
+    <exception-type>java.lang.NullPointerException</exception-type>
+    <location>/basejsp/error.jsp</location>
+  </error-page>
 </web-app>

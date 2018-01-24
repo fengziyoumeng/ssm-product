@@ -80,6 +80,22 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.2</version>
     </dependency>
+    <!-- 分页组件 -->
+    <dependency>
+      <groupId>com.github.miemiedev</groupId>
+      <artifactId>mybatis-paginator</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.jsqlparser</groupId>
+      <artifactId>jsqlparser</artifactId>
+      <version>0.9.1</version>
+    </dependency>
     <!-- end mybatis核心包 -->
 
     <!-- start generator自动生成代码包 -->
@@ -226,11 +242,11 @@
     <!-- end redis整合 -->
 
     <!-- start 分库分表 -->
-    <dependency>
-      <groupId>com.dangdang</groupId>
-      <artifactId>sharding-jdbc-core</artifactId>
-      <version>1.4.2</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.dangdang</groupId>-->
+      <!--<artifactId>sharding-jdbc-core</artifactId>-->
+      <!--<version>1.4.2</version>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>com.dangdang</groupId>
       <artifactId>sharding-jdbc-config-spring</artifactId>
@@ -245,6 +261,11 @@
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
       <version>1.8.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>5.2.4.Final</version>
     </dependency>
     <!-- end 分库分表 -->
 
@@ -266,6 +287,19 @@
   </dependencies>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>utf8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+
     <finalName>ssm-product</finalName>
     <resources>
       <resource>
@@ -285,5 +319,4 @@
       </resource>
     </resources>
   </build>
-
 </project>

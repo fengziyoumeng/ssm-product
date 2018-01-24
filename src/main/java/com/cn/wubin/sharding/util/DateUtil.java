@@ -1,4 +1,4 @@
-package com.cn.wubin.utils;
+package com.cn.wubin.sharding.util;
 
 import java.text.DateFormatSymbols;
 import java.text.ParseException;

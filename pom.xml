@@ -255,6 +255,14 @@
       <version>1.0.0</version>
     </dependency>
     <!-- end 一些工具类，如StringUtil -->
+
+    <!-- start 二维码工具类 -->
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    <!-- end 二维码工具类 -->
   </dependencies>
 
   <build>

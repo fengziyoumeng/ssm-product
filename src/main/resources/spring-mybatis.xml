@@ -9,7 +9,7 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-    <!-- 自动扫描 -->
+    <!-- 自动扫描，没有这个配置的话，容器初始化时cacheBean中的configService就不能从上下文中取出 -->
     <context:component-scan base-package="com.cn.wubin" />
 
     <!-- 引入配置文件 -->
@@ -24,8 +24,9 @@
         <property name="ignoreUnresolvablePlaceholders" value="true" />
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
+    <!-- BasicDataSource提供了close()方法关闭数据源，
+         所以必须设定destroy-method=”close”属性，以便Spring容器关闭时，数据源能够正常关闭 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}" />
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
@@ -42,14 +43,24 @@
         <property name="maxWait" value="${maxWait}" />
     </bean>
 
-    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件
+         使用SqlSessionFactoryBean来代替SqlSessionFactoryBuilder创建SqlSessionFactory，
+         然后可以使用下面两种方式使用sqlSession：
+         1、SqlSessionTemplate（一个实现了SqlSession接口的SqlSessionTemplate实现类）
+         2、SqlSessionDaoSupport（是一个抽象的支持类, 用来为你提供 SqlSession，调用 getSqlSession()方法你会得到一个SqlSessionTemplate）
+    -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:com/cn/wubin/mappers/*.xml" />
     </bean>
 
-    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <!-- DAO接口所在包名，Spring会自动查找其下的类
+         MapperScannerConfigurer 将会创建 MapperFactoryBean,之后自动装配，然后创建代理然后注入到spring中，自动扫描数据映射器接口，生成代理类、并注入到Spring的容器中；
+         在spring.xml中需要配置所有的dao层实现，把sqlSession或者sqlSessionFactory注入进去
+         所有常见的CRUD方法实现：一般的做法是写一个baseDao，把所有常见的CRUD方法实现，然后每个业务模块的dao去继承该baseDao
+         dao层我们继承了SqlSessionDaoSupport，所以可以直接使用getSqlSession() 方法获取sqlSessionTemplate，然后操作数据映射文件（mapper文件）里的sql了
+    -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.cn.wubin.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:*-beans.xml"})
 public class TestMybatis {
 
     @Resource

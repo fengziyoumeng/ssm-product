@@ -1,13 +1,12 @@
 package com.cn.wubin.redis.redisson;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.redisson.Redisson;
 import org.redisson.api.*;
 import org.redisson.config.Config;
 import org.redisson.config.SingleServerConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /***
  * Redis client的辅助工具类
  * 用于连接Redis服务器 创建不同的Redis Server对应的客户端对象
@@ -16,7 +15,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RedisUtils {
 
-   private static   Logger logger= LoggerFactory.getLogger(RedisUtils.class);
+   private static Logger logger= LogManager.getLogger(RedisUtils.class);
 
    private static RedisUtils redisUtils;
 

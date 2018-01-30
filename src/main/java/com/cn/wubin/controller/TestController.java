@@ -57,7 +57,7 @@ public class TestController {
     public String saveData(HttpServletRequest request){
 
         ArcCredit arcCredit = new ArcCredit();
-//        arcCredit.setConsumer_no("5"); //以consumer_no来分库分表的，所以不能重复插入，他会通过策略自动插入的，所以注释掉
+        arcCredit.setConsumer_no("99"); //以consumer_no来分库分表的，所以不能重复插入
         arcCredit.setCredit_type(2l);
         arcCredit.setGrade("2");
         arcCredit.setReq_ext("2");
@@ -65,7 +65,7 @@ public class TestController {
         arcCredit.setTotal(new BigDecimal(56));
         arcCredit.setUnuse(new BigDecimal(6));
         arcCredit.setUsed(new BigDecimal(6));
-//        arcCredit.setUser_id(8l); //以user_id来分库分表的，所以不能重复插入，他会通过策略自动插入的，所以注释掉
+        arcCredit.setUser_id(23l); //以user_id来分库分表的，所以不能重复插入
         Boolean flag = arcCreditService.saveorUpdate(arcCredit);
         logger.info("flag："+flag);
         return "success";  //将model对象属性映射到test.jsp

@@ -4,8 +4,8 @@ import com.cn.wubin.sharding.util.DateUtil;
 import com.dangdang.ddframe.rdb.sharding.api.ShardingValue;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.table.SingleKeyTableShardingAlgorithm;
 import com.google.common.collect.Range;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Collection;
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.LinkedHashSet;
 
 public class SingleKeyByDateTbAlgorithm implements SingleKeyTableShardingAlgorithm<Date> {
 
-    private Logger logger = LoggerFactory.getLogger(SingleKeyByDateTbAlgorithm.class);
+    private Logger logger = LogManager.getLogger(SingleKeyByDateTbAlgorithm.class);
 
 
     @Override

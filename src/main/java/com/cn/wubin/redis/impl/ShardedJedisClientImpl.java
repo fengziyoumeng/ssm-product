@@ -1,6 +1,8 @@
 package com.cn.wubin.redis.impl;
 
 import com.cn.wubin.redis.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -9,10 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class ShardedJedisClientImpl extends AbstractClient implements ShardedJedisClient {
-	private final Logger logger = Logger.getLogger(getClass().getName());
+	private final Logger logger = LogManager.getLogger(getClass().getName());
 
 	public ShardedJedisClientImpl(String host, int port) {
 		super(host, port);
@@ -47,7 +48,7 @@ public class ShardedJedisClientImpl extends AbstractClient implements ShardedJed
 				try {
 					pool.returnResource(jedis);
 				} catch (Exception ex) {
-					logger.warning("Can not return resource." + ex.getMessage());
+					logger.warn("Can not return resource." + ex.getMessage());
 				}
 			}
 		}

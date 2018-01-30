@@ -1,4 +1,4 @@
-package com.cn.wubin;
+package com.cn.wubin.dubbo.dubbo_1;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cn.wubin.model.pojo.BannerInfo;

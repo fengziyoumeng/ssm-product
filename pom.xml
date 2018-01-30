@@ -284,6 +284,14 @@
       <version>3.3.0</version>
     </dependency>
     <!-- end 二维码工具类 -->
+
+    <!-- start 定时器 -->
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>1.8.6</version>
+    </dependency>
+    <!-- end 定时器 -->
   </dependencies>
 
   <build>

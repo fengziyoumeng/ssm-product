@@ -3,15 +3,15 @@ package com.cn.wubin.sharding.algorithm;
 import com.cn.wubin.sharding.util.DateUtil;
 import com.dangdang.ddframe.rdb.sharding.api.ShardingValue;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.database.SingleKeyDatabaseShardingAlgorithm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Collection;
 import java.util.Date;
 
 public class SingleKeyByDateDbAlgorithm implements SingleKeyDatabaseShardingAlgorithm<Date> {
 
-    private Logger logger = LoggerFactory.getLogger(SingleKeyByDateTbAlgorithm.class);
+    private Logger logger = LogManager.getLogger(SingleKeyByDateTbAlgorithm.class);
 
     @Override
     public String doEqualSharding(Collection<String> collection, ShardingValue<Date> shardingValue) {

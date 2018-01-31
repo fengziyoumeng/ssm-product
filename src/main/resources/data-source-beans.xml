@@ -58,7 +58,7 @@
         <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
 
         <!-- 开启Druid的监控统计功能 -->
-        <!--<property name="filters" value="stat,wall,log4j" />-->
+        <property name="filters" value="stat,wall,log4j" />
         <!--<property name="filters" value="mergeStat" /> -->
         <!-- Oracle连接是获取字段注释 -->
     </bean>
@@ -99,7 +99,7 @@
                   value="20" />
 
         <!-- 开启Druid的监控统计功能 -->
-        <!--<property name="filters" value="stat,wall,log4j" />-->
+        <property name="filters" value="stat,wall,log4j" />
         <!--<property name="filters" value="mergeStat" /> -->
         <!-- Oracle连接是获取字段注释 -->
     </bean>
@@ -139,7 +139,7 @@
                   value="20" />
 
         <!-- 开启Druid的监控统计功能 -->
-        <!--<property name="filters" value="stat,wall,log4j" />-->
+        <property name="filters" value="stat,wall,log4j" />
         <!--<property name="filters" value="mergeStat" /> -->
         <!-- Oracle连接是获取字段注释 -->
     </bean>

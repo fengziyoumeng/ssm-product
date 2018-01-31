@@ -10,6 +10,7 @@ import com.cn.wubin.service.IBannerInfoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -54,18 +55,19 @@ public class TestController {
      * @return
      */
     @RequestMapping("/save/data")
+    @Transactional
     public String saveData(HttpServletRequest request){
 
         ArcCredit arcCredit = new ArcCredit();
-        arcCredit.setConsumer_no("99"); //以consumer_no来分库分表的，所以不能重复插入
-        arcCredit.setCredit_type(2l);
+        arcCredit.setConsumer_no("5"); //以consumer_no来分库分表的，所以不能重复插入
+        arcCredit.setUser_id(5l); //以user_id来分库分表的，所以不能重复插入
+        arcCredit.setCredit_type(5l);
         arcCredit.setGrade("2");
         arcCredit.setReq_ext("2");
         arcCredit.setState("3");
         arcCredit.setTotal(new BigDecimal(56));
         arcCredit.setUnuse(new BigDecimal(6));
         arcCredit.setUsed(new BigDecimal(6));
-        arcCredit.setUser_id(23l); //以user_id来分库分表的，所以不能重复插入
         Boolean flag = arcCreditService.saveorUpdate(arcCredit);
         logger.info("flag："+flag);
         return "success";  //将model对象属性映射到test.jsp
